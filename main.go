@@ -6,13 +6,16 @@ import (
 	"os"
 	"towelong/mogu/service"
 	"towelong/mogu/utils"
-
+	"time"
 	"github.com/joho/godotenv"
 )
 
 func main() {
 	// load enviroment secret key
 	godotenv.Load()
+	fmt.Println("start0")
+	time.Sleep(30 * time.Second)
+	fmt.Println("end0")
 	moguding := service.NewMoGuService()
 	token, userId := moguding.MoGuLogin(os.Getenv("ACCOUNT"), os.Getenv("PASSWORD"))
 	planID := moguding.GetPlanID(token, userId)
